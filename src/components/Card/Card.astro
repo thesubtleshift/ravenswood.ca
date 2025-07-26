@@ -1,0 +1,44 @@
+---
+// Card component props
+import { Image } from 'astro:assets';
+
+export interface Props {
+  title: string;
+  ctaText: string;
+  ctaUrl: string;
+  image?: string;
+  imageAlt?: string;
+  className?: string;
+}
+
+const { title, ctaText, ctaUrl, image, imageAlt, className = '' } = Astro.props;
+---
+
+<div class={`card ${className}`}>
+  {
+    image && (
+      <div class="card-image">
+        <Image
+          src={image}
+          alt={imageAlt || title}
+          width={400}
+          height={300}
+          loading="eager"
+        />
+      </div>
+    )
+  }
+  <div class="card-content">
+    <h2 class="card-title">{title}</h2>
+    <p class="card-subtitle">
+      <slot />
+    </p>
+    <a href={ctaUrl} class="card-cta">
+      {ctaText}
+    </a>
+  </div>
+</div>
+
+<style lang="scss" scoped>
+  @use './Card.module.scss' as *;
+</style>

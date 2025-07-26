@@ -1,0 +1,28 @@
+---
+// Hero component props
+import RotatingSubtitle from '../RotatingSubtitle/RotatingSubtitle.astro';
+
+export interface Props {
+  heroImage?: string;
+}
+
+const { heroImage } = Astro.props;
+---
+
+<section class="hero">
+  {
+    heroImage && (
+      <div class="hero-background">
+        <img src={heroImage} alt="Ravenswood retreat" class="hero-image" />
+      </div>
+    )
+  }
+  <div class="hero-content">
+    <h1 class="hero-title">Welcome to Ravenswood</h1>
+    <RotatingSubtitle />
+  </div>
+</section>
+
+<style lang="scss" scoped>
+  @use './Hero.module.scss' as *;
+</style>

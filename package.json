@@ -1,0 +1,28 @@
+{
+  "name": "ravenswood.ca",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "check": "prettier --check .",
+    "dev": "astro dev",
+    "fix:format": "prettier --check --write .",
+    "prep": "npm run fix:format && npm run build",
+    "preview": "astro preview",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "@types/feather-icons": "^4.29.4",
+    "astro": "^5.12.3",
+    "feather-icons": "^4.29.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.89.2"
+  },
+  "private": true,
+  "engines": {
+    "node": ">= 22"
+  },
+  "spelling": "cSpell:ignore ravenswood -"
+}

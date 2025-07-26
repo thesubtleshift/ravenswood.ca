@@ -1,0 +1,105 @@
+---
+// cSpell:ignore facebook instagram
+
+import feather from 'feather-icons';
+export interface FooterLink {
+  text: string;
+  url: string;
+  icon?: string;
+}
+
+export interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+export interface Props {
+  sections?: FooterSection[];
+}
+
+const defaultSections: FooterSection[] = [
+  {
+    title: 'Services',
+    links: [
+      { text: 'Airbnb', url: 'https://www.airbnb.ca/rooms/50920160' },
+      {
+        text: 'The Subtle Shift',
+        url: 'https://thesubtleshift.ca/my-services/',
+      },
+      { text: 'Contact', url: 'https://thesubtleshift.ca/contacts/' },
+    ],
+  },
+  {
+    title: 'Social',
+    links: [
+      {
+        text: 'Facebook',
+        url: 'https://www.facebook.com/RavenswoodCanada/',
+        icon: 'facebook',
+      },
+      {
+        text: 'Instagram',
+        url: 'https://www.instagram.com/ravenswoodcanada/',
+        icon: 'instagram',
+      },
+    ],
+  },
+];
+
+const { sections = defaultSections } = Astro.props;
+
+const iconSize = 20;
+
+const icons = {
+  facebook: feather.icons.facebook.toSvg({ width: iconSize, height: iconSize }),
+  instagram: feather.icons.instagram.toSvg({
+    width: iconSize,
+    height: iconSize,
+  }),
+};
+---
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-left">
+      <img
+        src="/raven-logo-small.png"
+        alt="Ravenswood logo"
+        class="footer-logo"
+      />
+    </div>
+    <div class="footer-right">
+      {
+        sections.map((section) => (
+          <div class="footer-section">
+            <h3 class="footer-heading">{section.title}</h3>
+            <ul class="footer-links">
+              {section.links.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.icon && icons[link.icon as keyof typeof icons] && (
+                      <span
+                        class="footer-icon"
+                        set:html={icons[link.icon as keyof typeof icons]}
+                      />
+                    )}
+                    <span class="footer-link-text">{link.text}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="footer-copyright-container">
+      <p class="footer-copyright-text">© Ravenswood Enterprises</p>
+    </div>
+  </div>
+</footer>
+
+<style lang="scss" scoped>
+  @use './Footer.module.scss' as *;
+</style>

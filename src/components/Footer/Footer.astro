@@ -21,11 +21,11 @@ const defaultSections: FooterSection[] = [
   {
     title: 'Services',
     links: [
-      { text: 'Airbnb', url: 'https://www.airbnb.ca/rooms/50920160' },
       {
         text: 'The Subtle Shift',
         url: 'https://thesubtleshift.ca/my-services/',
       },
+      { text: 'Book your stay', url: 'https://www.airbnb.ca/rooms/50920160' },
       { text: 'Contact', url: 'https://thesubtleshift.ca/contacts/' },
     ],
   },
@@ -95,7 +95,9 @@ const icons = {
   </div>
   <div class="footer-copyright">
     <div class="footer-copyright-container">
-      <p class="footer-copyright-text">© Ravenswood Enterprises</p>
+      <p class="footer-copyright-text">
+        © {new Date().getFullYear()} Ravenswood Enterprises
+      </p>
     </div>
   </div>
 </footer>

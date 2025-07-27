@@ -1,0 +1,38 @@
+---
+// Services component
+import Card from '../Card/Card.astro';
+---
+
+<section class="services">
+  <div class="services-container">
+    <div class="services-grid">
+      <Card
+        title="Book your stay"
+        ctaText="Check availability"
+        ctaUrl="https://www.airbnb.ca/rooms/50920160"
+        image="/images/bedroom.jpg"
+        imageAlt="Cozy cabin bedroom at Ravenswood"
+      >
+        Experience rustic charm and modern comforts at Ravenswood in a cozy log
+        cabin, explore forest trails, and enjoy starry night skies by your
+        private fire pit.
+      </Card>
+
+      <Card
+        title="Experience balance"
+        ctaText="Visit The Subtle Shift"
+        ctaUrl="https://thesubtleshift.ca/"
+        image="/images/spring-flowers.jpg"
+        imageAlt="The Subtle Shift"
+      >
+        Your path to healing and authenticity. Come experience Reiki, light
+        language, and intuitive guidance offered through personal and group
+        services and retreats.
+      </Card>
+    </div>
+  </div>
+</section>
+
+<style lang="scss" scoped>
+  @use './Services.module.scss' as *;
+</style>

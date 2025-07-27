@@ -1,0 +1,30 @@
+---
+// Navigation component props
+export interface Props {
+  // Add any props here if needed
+}
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-left">
+      <a href="/" class="nav-brand">
+        <img
+          src="/raven-logo-small.png"
+          alt="Ravenswood logo"
+          class="nav-logo"
+        />
+        <span class="nav-title">Ravenswood.ca</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="https://www.airbnb.ca/rooms/50920160" class="nav-button"
+        >Book now</a
+      >
+    </div>
+  </div>
+</nav>
+
+<style lang="scss" scoped>
+  @use './Navigation.module.scss' as *;
+</style>

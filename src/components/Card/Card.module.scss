@@ -1,0 +1,82 @@
+@use '../../styles/base.scss' as *;
+
+.card {
+  background: $color-background;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-lg;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  max-width: 444px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  @include transition;
+
+  &:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  }
+}
+
+.card-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition;
+  }
+}
+
+.card-content {
+  padding: $spacing-xl $spacing-lg;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  margin: 0 0 $spacing-md 0;
+  color: $color-primary;
+  line-height: $line-height-tight;
+}
+
+.card-subtitle {
+  font-size: $font-size-base;
+  color: $color-text-muted;
+  margin: 0 0 $spacing-lg 0;
+  line-height: $line-height-normal;
+}
+
+.card-cta {
+  display: inline-block;
+  background: $color-primary;
+  color: $color-background;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-semibold;
+  font-size: $font-size-sm;
+  text-align: center;
+  text-decoration: none;
+  width: fit-content;
+  border: 1px solid transparent;
+  @include transition;
+
+  &:hover,
+  &:focus {
+    background: $color-background;
+    color: $color-primary;
+    border-color: $color-primary;
+    text-decoration: none;
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}

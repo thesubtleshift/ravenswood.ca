@@ -1,0 +1,71 @@
+@use '../../styles/base.scss' as *;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: $color-background;
+  border-bottom: 1px solid $color-border;
+  padding: $spacing-md 0;
+  z-index: 100;
+}
+
+.nav-container {
+  @include flex-between;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-xl;
+}
+
+.nav-left {
+  @include flex-center;
+}
+
+.nav-brand {
+  @include flex-center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-logo {
+  height: $logo-size;
+  width: $logo-size;
+  margin-top: -$spacing-sm;
+  margin-bottom: -$spacing-sm;
+  margin-right: $spacing-md;
+  object-fit: contain;
+}
+
+.nav-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text;
+
+  // Hide on mobile devices
+  @media (max-width: $breakpoint-xs) {
+    display: none;
+  }
+}
+
+.nav-right {
+  @include flex-center;
+}
+
+.nav-button {
+  background: $color-primary;
+  color: $color-background;
+  text-decoration: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-bold;
+  font-size: 0.95rem;
+  @include transition;
+
+  &:hover,
+  &:focus {
+    background: hsl(220, 13%, 14%); // Darker version of primary
+    text-decoration: none;
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}

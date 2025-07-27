@@ -1,0 +1,115 @@
+---
+// RotatingSubtitle component props
+//
+// Design: This component prevents layout shift by rendering all subtitles in the DOM
+// and using CSS opacity transitions instead of changing text content. All subtitles
+// are positioned absolutely within a container that maintains consistent dimensions
+// based on the tallest subtitle. Only the 'active' subtitle is visible.
+//
+export interface Props {
+  subtitles?: string[];
+  initialDelay?: number;
+  rotationInterval?: number;
+  fadeDuration?: number;
+}
+
+const defaultSubtitles = [
+  'Unplug • Unwind • Reawaken',
+  'Starry Nights • Serene Days • Lasting Memories',
+  'Pause • Breathe • Belong',
+  'Reconnect with Nature • Reconnect with Yourself',
+  'Rest • Wander • Wonder',
+  'Retreat • Restore • Recharge',
+  'Nature • Comfort • Connection',
+  'A Forest Retreat to Restore and Inspire',
+  'Where the Forest Renews Your Spirit',
+  'Rustic Charm • Modern Comfort • Endless Stars',
+  'Retreat to Simplicity • Return to Yourself',
+  'Your Cabin Escape in the Heart of the Kawarthas',
+];
+
+const {
+  subtitles = defaultSubtitles,
+  initialDelay = 3000,
+  rotationInterval = 4000,
+  fadeDuration = 500,
+} = Astro.props;
+---
+
+<div class="rotating-subtitle-container">
+  {/* Ghost element to maintain container height */}
+  <p class="rotating-subtitle-ghost">
+    {
+      subtitles.reduce((longest, current) =>
+        current.length > longest.length ? current : longest
+      )
+    }
+  </p>
+
+  {
+    subtitles.map((subtitle, index) => (
+      <p
+        class={`rotating-subtitle ${index === 0 ? 'active' : ''}`}
+        data-index={index}
+        data-clickable="true"
+      >
+        {subtitle}
+      </p>
+    ))
+  }
+</div>
+
+<style lang="scss" scoped>
+  @use './RotatingSubtitle.module.scss' as *;
+</style>
+
+<script
+  define:vars={{ subtitles, initialDelay, rotationInterval, fadeDuration }}
+>
+  const subtitleElements = document.querySelectorAll('.rotating-subtitle');
+  let currentIndex = 0;
+  let rotationIntervalId = null;
+
+  function rotateSubtitle() {
+    // Hide current subtitle
+    subtitleElements[currentIndex].classList.remove('active');
+
+    // Show next subtitle
+    currentIndex = (currentIndex + 1) % subtitles.length;
+    subtitleElements[currentIndex].classList.add('active');
+  }
+
+  function startRotation() {
+    // Clear any existing interval
+    if (rotationIntervalId) {
+      clearInterval(rotationIntervalId);
+    }
+
+    // Start rotation after initial delay, then every rotation interval
+    setTimeout(() => {
+      rotationIntervalId = setInterval(rotateSubtitle, rotationInterval);
+    }, initialDelay);
+  }
+
+  function handleClick() {
+    // Force rotation to next subtitle
+    rotateSubtitle();
+
+    // Reset rotation timer with 500ms delay
+    if (rotationIntervalId) {
+      clearInterval(rotationIntervalId);
+    }
+
+    setTimeout(() => {
+      rotationIntervalId = setInterval(rotateSubtitle, rotationInterval);
+    }, 500);
+  }
+
+  // Add click event listeners to all subtitle elements
+  subtitleElements.forEach((element) => {
+    element.addEventListener('click', handleClick);
+  });
+
+  // Start initial rotation
+  startRotation();
+</script>

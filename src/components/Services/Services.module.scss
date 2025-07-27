@@ -1,0 +1,28 @@
+@use '../../styles/base.scss' as *;
+
+.services {
+  padding: $spacing-xl var(--layout-horizontal-padding);
+  padding-bottom: $spacing-2xl * 3;
+  background: $color-background;
+}
+
+.services-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-xl;
+  justify-items: center;
+  align-items: start;
+  max-width: 888px;
+  margin: 0 auto;
+
+  > * {
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+  }
+}

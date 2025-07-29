@@ -1,4 +1,6 @@
 ---
+import { BOOKING_URL } from '../../constants';
+
 // Navigation component props
 export interface Props {
   // Add any props here if needed
@@ -18,9 +20,7 @@ export interface Props {
       </a>
     </div>
     <div class="nav-right">
-      <a href="https://www.airbnb.ca/rooms/50920160" class="nav-button"
-        >Book now</a
-      >
+      <a href={BOOKING_URL} class="nav-button">Book your stay</a>
     </div>
   </div>
 </nav>

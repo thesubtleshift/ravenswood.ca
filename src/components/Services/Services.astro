@@ -1,5 +1,5 @@
 ---
-// Services component
+import { BOOKING_URL } from '../../constants';
 import Card from '../Card/Card.astro';
 ---
 
@@ -7,10 +7,10 @@ import Card from '../Card/Card.astro';
   <div class="services-container">
     <div class="services-grid">
       <Card
-        title="Experience balance"
+        title="Find balance"
         ctaText="Visit The Subtle Shift"
         ctaUrl="https://thesubtleshift.ca/"
-        image="/images/services.webp"
+        image="/images/studio.jpg"
         imageAlt="The Subtle Shift"
       >
         Your path to healing and authenticity. Come experience Reiki, light
@@ -20,7 +20,7 @@ import Card from '../Card/Card.astro';
       <Card
         title="Book your stay"
         ctaText="Check availability"
-        ctaUrl="https://www.airbnb.ca/rooms/50920160"
+        ctaUrl={BOOKING_URL}
         image="/images/bedroom.jpg"
         imageAlt="Cozy cabin bedroom at Ravenswood"
       >

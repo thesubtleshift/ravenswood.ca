@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:math';
 
 // Base SCSS file with variables and global styles
 
@@ -66,13 +67,6 @@ $spacing-4xl: 6rem;
 // Logo Variables
 $logo-size: 44px;
 
-// Layout Variables
-$container-max-width: 1000px;
-
-:root {
-  --layout-horizontal-padding: #{$spacing-2xl};
-}
-
 // Border Radius Variables
 $border-radius-sm: 0.25rem;
 $border-radius-md: 0.375rem;
@@ -89,11 +83,28 @@ $shadow-lg:
   0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
 // Breakpoint Variables
+$breakpoint-2xs: 375px; // iPhone SE
 $breakpoint-xs: 480px;
 $breakpoint-sm: 640px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1280px;
+
+// Layout Variables
+$container-max-width: 1000px;
+
+:root {
+  --layout-horizontal-padding: #{$spacing-2xl};
+
+  @media (max-width: $breakpoint-xs) {
+    --layout-horizontal-padding: #{$spacing-lg};
+  }
+
+  // Fine tuning to ensure that 'Ravenswood' is not split across lines on iPhone SE.
+  @media (max-width: $breakpoint-2xs) {
+    --layout-horizontal-padding: #{math.div($spacing-md + $spacing-sm, 2)};
+  }
+}
 
 // Mixins
 @mixin responsive($breakpoint) {
@@ -405,11 +416,5 @@ body {
   }
   .md\:text-4xl {
     font-size: $font-size-4xl;
-  }
-}
-
-@media (max-width: $breakpoint-xs) {
-  :root {
-    --layout-horizontal-padding: #{$spacing-lg};
   }
 }

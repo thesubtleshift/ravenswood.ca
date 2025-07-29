@@ -1,6 +1,7 @@
 ---
 // cSpell:ignore facebook instagram
 
+import { BOOKING_URL } from '../../constants';
 import feather from 'feather-icons';
 export interface FooterLink {
   text: string;
@@ -25,7 +26,7 @@ const defaultSections: FooterSection[] = [
         text: 'The Subtle Shift',
         url: 'https://thesubtleshift.ca/my-services/',
       },
-      { text: 'Book your stay', url: 'https://www.airbnb.ca/rooms/50920160' },
+      { text: 'Book your stay', url: BOOKING_URL },
       { text: 'Contact', url: 'https://thesubtleshift.ca/contacts/' },
     ],
   },

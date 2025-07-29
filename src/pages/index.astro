@@ -1,4 +1,9 @@
 ---
+const baseFont = {
+  primary: 'Montserrat',
+  weights: '300;400;500;600;700',
+} as const;
+
 const title = 'Ravenswood | A Home in Nature';
 const description =
   'Discover Ravenswood, a serene retreat offering comfortable accommodations and wellness services. Book your stay or explore our wellness offerings.';
@@ -40,7 +45,7 @@ import Footer from '../components/Footer/Footer.astro';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      href={`https://fonts.googleapis.com/css2?family=${baseFont.primary}:wght@${baseFont.weights}&display=swap`}
       rel="stylesheet"
     />
   </head>

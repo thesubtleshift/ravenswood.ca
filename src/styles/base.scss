@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // Base SCSS file with variables and global styles
 
 // Color Variables (HSL format)
@@ -11,8 +13,15 @@ $color-text-muted: hsl(237, 9%, 60%);
 $color-border: hsl(214, 32%, 91%);
 
 // Typography Variables
+
+$base-font: (
+  primary: 'Montserrat',
+  weights: '300;400;500;600;700',
+);
+$base-font-weights: str-split(map.get($base-font, weights), ';');
+
 $font-family-base:
-  'Montserrat',
+  map.get($base-font, primary),
   -apple-system,
   BlinkMacSystemFont,
   'Segoe UI',

@@ -14,7 +14,7 @@
   @include flex-between;
   max-width: $container-max-width;
   margin: 0 auto;
-  padding: 0 $spacing-xl;
+  padding: 0 var(--layout-horizontal-padding);
 }
 
 .nav-left {
@@ -37,13 +37,13 @@
 }
 
 .nav-title {
+  display: none;
   font-size: $font-size-lg;
   font-weight: $font-weight-semibold;
   color: $color-text;
 
-  // Hide on mobile devices
-  @media (max-width: $breakpoint-xs) {
-    display: none;
+  @media (min-width: $breakpoint-sm) {
+    display: block;
   }
 }
 

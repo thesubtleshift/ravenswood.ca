@@ -12,8 +12,8 @@
     "dev": "astro dev",
     "fix:format": "prettier --check --write .",
     "fix": "npm run fix:format",
-    "prebuild": "npm run check",
-    "prep": "npm run fix && npm run build",
+    "prepublishOnly": "npm run verify && git status --exit-code",
+    "verify": "npm run fix && npm run build",
     "preview": "astro preview",
     "start": "npm run dev"
   },
